@@ -99,7 +99,7 @@ describe('Dashboard', () => {
       },
     });
 
-    await actWait(500);
+    await actWait();
 
     expect(getByTestId('balance-income')).toHaveTextContent('R$ 6.000,00');
 
@@ -166,7 +166,7 @@ describe('Dashboard', () => {
       },
     });
 
-    await actWait(500);
+    await actWait();
 
     expect(getByText('Loan')).toBeTruthy();
     expect(getByText('R$ 1.500,00')).toBeTruthy();
@@ -196,7 +196,7 @@ describe('Dashboard', () => {
   test('should be able to upload a file', async () => {
     const { getByText, getByTestId } = render(<App />);
 
-    fireEvent.click(getByText('Importar'));
+    fireEvent.click(getByText('Enviar'));
 
     await actWait();
 
