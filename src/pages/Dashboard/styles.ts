@@ -81,6 +81,7 @@ export const TableContainer = styled.section`
 
       &.outcome {
         color: #e83f5b;
+        padding-left: 20px;
       }
     }
 

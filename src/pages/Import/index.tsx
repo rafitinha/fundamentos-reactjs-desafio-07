@@ -35,7 +35,7 @@ const Import: React.FC = () => {
   }
 
   function submitFile(files: File[]): void {
-    // TODO
+    console.log(files);
   }
 
   return (

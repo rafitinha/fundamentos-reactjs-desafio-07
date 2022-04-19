@@ -1,3 +1,4 @@
+/* eslint-disable no-multi-str */
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable import/first */
 
@@ -30,7 +31,7 @@ import App from '../App';
 const apiMock = new MockAdapter(api);
 
 const wait = (amount = 0): Promise<void> => {
-  return new Promise((resolve) => setTimeout(resolve, amount));
+  return new Promise(resolve => setTimeout(resolve, amount));
 };
 
 const actWait = async (amount = 0): Promise<void> => {
@@ -43,7 +44,7 @@ describe('Dashboard', () => {
   it('should be able to list the total balance inside the cards', async () => {
     const { getByTestId } = render(<App />);
 
-    apiMock.onGet('transactions').reply(200, {
+    apiMock.onGet('/transactions/').reply(200, {
       transactions: [
         {
           id: '807da2da-4ba6-4e45-b4f8-828d900c2adf',
@@ -98,7 +99,7 @@ describe('Dashboard', () => {
       },
     });
 
-    await actWait();
+    await actWait(500);
 
     expect(getByTestId('balance-income')).toHaveTextContent('R$ 6.000,00');
 
@@ -110,7 +111,7 @@ describe('Dashboard', () => {
   it('should be able to list the transactions', async () => {
     const { getByText } = render(<App />);
 
-    apiMock.onGet('transactions').reply(200, {
+    apiMock.onGet('/transactions/').reply(200, {
       transactions: [
         {
           id: '807da2da-4ba6-4e45-b4f8-828d900c2adf',
@@ -165,7 +166,7 @@ describe('Dashboard', () => {
       },
     });
 
-    await actWait();
+    await actWait(500);
 
     expect(getByText('Loan')).toBeTruthy();
     expect(getByText('R$ 1.500,00')).toBeTruthy();
